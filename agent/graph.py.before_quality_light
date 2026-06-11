@@ -13,7 +13,7 @@ from langgraph.graph import END, START, StateGraph
 
 from agent import prompts
 from agent.execution import ExecutionResult, execute_sql
-from agent.context import render_context
+from agent.schema import render_schema
 
 MAX_ITERATIONS = int(os.environ.get("MAX_ITERATIONS", "2"))
 
@@ -47,7 +47,7 @@ def llm() -> ChatOpenAI:
 
 
 def _attach_schema(state: AgentState) -> dict:
-    return {"schema": render_context(state.db_id, state.question)}
+    return {"schema": render_schema(state.db_id)}
 
 
 def _extract_sql(text: str) -> str:
@@ -80,57 +80,15 @@ def verify_node(state: AgentState) -> dict:
     """
     Fast deterministic verifier.
 
-    Avoids an LLM verifier. Sends to revise only for clear structural failures.
+    This avoids a second LLM call for most successful requests.
+    It only sends the graph to revise when there is a clear issue.
     """
     execution = state.execution
     q = state.question.lower()
-    sql = state.sql.lower().strip()
+    sql = state.sql.lower()
 
     ok = True
     issue = ""
-
-    ranking_words = ["top", "highest", "lowest", "largest", "smallest", "most", "least", "maximum", "minimum"]
-    ranking_intent = any(w in q for w in ranking_words)
-
-    average_intent = "average" in q or "mean" in q
-    percentage_intent = "percentage" in q or "percent" in q
-
-    count_intent = (
-        "how many" in q
-        or re.search(r"\bcount\b", q) is not None
-        or (
-            "number of" in q
-            and not ranking_intent
-            and not average_intent
-            and "enrollment" not in q
-        )
-    )
-
-    total_intent = any(
-        phrase in q
-        for phrase in [
-            "total amount",
-            "total number",
-            "total spent",
-            "total cost",
-            "sum of",
-        ]
-    )
-
-    list_or_attribute_intent = (
-        not count_intent
-        and not average_intent
-        and not percentage_intent
-        and not total_intent
-        and any(
-            w in q
-            for w in [
-                "list", "which", "what are", "what is", "mention", "provide",
-                "name", "names", "id", "ids", "coordinate", "coordinates",
-                "address", "location", "type", "reputation"
-            ]
-        )
-    )
 
     if execution is None:
         ok = False
@@ -140,58 +98,25 @@ def verify_node(state: AgentState) -> dict:
         ok = False
         issue = f"SQL execution error: {execution.error}"
 
-    elif not sql.startswith(("select", "with")):
+    elif not sql.strip().startswith(("select", "with")):
         ok = False
         issue = "SQL is not a read-only SELECT/WITH query."
 
-    elif any(bad in f" {sql} " for bad in [" insert ", " update ", " delete ", " drop ", " alter ", " create "]):
-        ok = False
-        issue = "SQL contains a write/schema operation."
-
-    elif count_intent and "count(" not in sql:
+    elif ("how many" in q or "number of" in q or "count" in q) and "count(" not in sql:
         ok = False
         issue = "Question asks for a count but SQL does not use COUNT."
 
-    elif average_intent and "avg(" not in sql:
+    elif ("average" in q or "mean" in q) and "avg(" not in sql:
         ok = False
         issue = "Question asks for an average but SQL does not use AVG."
 
-    elif total_intent and ("sum(" not in sql and "count(" not in sql):
-        ok = False
-        issue = "Question asks for a total/sum but SQL does not use SUM or COUNT."
-
-    elif percentage_intent and "/" not in sql:
-        ok = False
-        issue = "Question asks for a percentage but SQL does not compute a ratio."
-
-    elif ranking_intent and "order by" not in sql:
+    elif any(w in q for w in ["top", "highest", "lowest", "largest", "smallest", "most", "least"]) and "order by" not in sql:
         ok = False
         issue = "Question asks for ranking but SQL has no ORDER BY."
-
-    elif ranking_intent and any(w in q for w in ["top", "highest", "lowest", "largest", "smallest", "most", "least"]) and "limit" not in sql:
-        ok = False
-        issue = "Question asks for a ranked answer but SQL has no LIMIT."
-
-    elif list_or_attribute_intent and "count(" in sql:
-        ok = False
-        issue = "Question asks for entities/details but SQL returns only a count."
 
     elif execution.row_count == 0 and "where" in sql:
         ok = False
         issue = "SQL returned zero rows with filters; filters may be wrong."
-
-    else:
-        rows = execution.rows or []
-        if (
-            list_or_attribute_intent
-            and "join" in sql
-            and "distinct" not in sql
-            and len(rows) > 1
-        ):
-            unique_rows = {repr(row) for row in rows}
-            if len(unique_rows) < len(rows):
-                ok = False
-                issue = "SQL returns duplicate rows from a JOIN; add DISTINCT for this list/attribute question."
 
     return {
         "verify_ok": ok,
@@ -201,9 +126,9 @@ def verify_node(state: AgentState) -> dict:
             "mode": "deterministic",
             "ok": ok,
             "issue": issue,
-            "row_count": execution.row_count if execution is not None and execution.ok else None,
         }],
     }
+
 
 def revise_node(state: AgentState) -> dict:
     execution_text = state.execution.render(max_rows=10) if state.execution is not None else "No execution result"

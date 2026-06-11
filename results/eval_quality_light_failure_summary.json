@@ -1,0 +1,521 @@
+{
+  "summary": {
+    "num_questions": 30,
+    "overall_execution_accuracy": 0.36666666666666664,
+    "per_iteration_accuracy": {
+      "iter_0": 0.36666666666666664,
+      "iter_1": 0.36666666666666664,
+      "iter_2": 0.36666666666666664
+    },
+    "avg_iterations": 1.3,
+    "failed_requests": 0
+  },
+  "failures_by_db": {
+    "formula_1": 4,
+    "financial": 1,
+    "california_schools": 2,
+    "toxicology": 2,
+    "thrombosis_prediction": 3,
+    "codebase_community": 3,
+    "card_games": 2,
+    "superhero": 1,
+    "student_club": 1
+  },
+  "failed_questions": [
+    {
+      "db_id": "formula_1",
+      "question": "What is the coordinates location of the circuits for Australian grand prix?",
+      "gold_sql": "SELECT DISTINCT T1.lat, T1.lng FROM circuits AS T1 INNER JOIN races AS T2 ON T2.circuitID = T1.circuitId WHERE T2.name = 'Australian Grand Prix'",
+      "final_sql": "SELECT \"lat\", \"lng\"\nFROM \"circuits\"\nJOIN \"races\" ON \"circuits\".\"circuitId\" = \"races\".\"circuitId\"\nWHERE \"races\".\"name\" = 'Australian Grand Prix';",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT \"lat\", \"lng\"\nFROM \"circuits\"\nJOIN \"races\" ON \"circuits\".\"circuitId\" = \"races\".\"circuitId\"\nWHERE \"races\".\"name\" = 'Australian Grand Prix';"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 11
+        }
+      ]
+    },
+    {
+      "db_id": "financial",
+      "question": "What is the average number of crimes committed in 1995 in regions where the number exceeds 4000 and the region has accounts that are opened starting from the year 1997?",
+      "gold_sql": "SELECT AVG(T1.A15) FROM district AS T1 INNER JOIN account AS T2 ON T1.district_id = T2.district_id WHERE STRFTIME('%Y', T2.date) >= '1997' AND T1.A15 > 4000",
+      "final_sql": "SELECT COUNT(*) AS count_regions\nFROM \"district\" d\nWHERE d.\"A14\" > 4000\n  AND EXISTS (\n    SELECT 1\n    FROM \"account\" a\n    WHERE a.\"district_id\" = d.\"district_id\"\n      AND strftime('%Y', a.\"date\") >= '1997'\n  );",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT AVG(d.\"A14\") AS average_crimes\nFROM \"district\" d\nWHERE d.\"A14\" > 4000\n  AND EXISTS (\n    SELECT 1\n    FROM \"account\" a\n    WHERE a.\"district_id\" = d.\"district_id\"\n      AND strftime('%Y', a.\"date\") >= '1997'\n  );"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "Question asks for a count but SQL does not use COUNT.",
+          "row_count": 1
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT COUNT(*) AS count_regions\nFROM \"district\" d\nWHERE d.\"A14\" > 4000\n  AND EXISTS (\n    SELECT 1\n    FROM \"account\" a\n    WHERE a.\"district_id\" = d.\"district_id\"\n      AND strftime('%Y', a.\"date\") >= '1997'\n  );",
+          "issue": "Question asks for a count but SQL does not use COUNT."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "Question asks for an average but SQL does not use AVG.",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "formula_1",
+      "question": "What is the average fastest lap time in seconds for Lewis Hamilton in all the Formula_1 races?",
+      "gold_sql": "SELECT AVG(CAST(SUBSTR(T2.fastestLapTime, 1, INSTR(T2.fastestLapTime, ':') - 1) AS INTEGER) * 60 + CAST(SUBSTR(T2.fastestLapTime, INSTR(T2.fastestLapTime, ':') + 1) AS REAL)) FROM drivers AS T1 INNER JOIN results AS T2 ON T1.driverId = T2.driverId WHERE T1.surname = 'Hamilton' AND T1.forename = 'Lewis'",
+      "final_sql": "SELECT AVG(CAST(REPLACE(REPLACE(r.fastestLapTime, ' ', ''), 's', '') AS REAL)) AS average_fastest_lap_time_seconds\nFROM results r\nJOIN drivers d ON r.driverId = d.driverId\nWHERE d.forename = 'Lewis' AND d.surname = 'Hamilton'\n  AND r.fastestLapTime IS NOT NULL;",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT AVG(CAST(REPLACE(REPLACE(r.fastestLapTime, ' ', ''), 's', '') AS REAL)) AS average_fastest_lap_time_seconds\nFROM results r\nJOIN drivers d ON r.driverId = d.driverId\nWHERE d.forename = 'Lewis' AND d.surname = 'Hamilton'\n  AND r.fastestLapTime IS NOT NULL;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "formula_1",
+      "question": "From race no. 50 to 100, how many finishers have been disqualified?",
+      "gold_sql": "SELECT SUM(IIF(time IS NOT NULL, 1, 0)) FROM results WHERE statusId = 2 AND raceID < 100 AND raceId > 50",
+      "final_sql": "SELECT COUNT(*) \nFROM results \nWHERE raceId BETWEEN 50 AND 100 \n  AND statusId IN (\n    SELECT statusId \n    FROM status \n    WHERE status = 'Disqualified'\n  );",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT COUNT(*) \nFROM results \nWHERE raceId BETWEEN 50 AND 100 \n  AND statusId IN (\n    SELECT statusId \n    FROM status \n    WHERE status = 'Disqualified'\n  );"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "california_schools",
+      "question": "What is the complete address of the school with the lowest excellence rate? Indicate the Street, City, Zip and State.",
+      "gold_sql": "SELECT T2.Street, T2.City, T2.State, T2.Zip FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode ORDER BY CAST(T1.NumGE1500 AS REAL) / T1.NumTstTakr ASC LIMIT 1",
+      "final_sql": "SELECT \n  s.\"Street\", \n  s.\"City\", \n  s.\"Zip\", \n  s.\"State\"\nFROM \n  \"schools\" s\nJOIN \n  \"satscores\" ss ON s.\"CDSCode\" = ss.\"cds\"\nORDER BY \n  (ss.\"NumGE1500\" * 1.0 / ss.\"enroll12\") ASC\nLIMIT 1;",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT \n  s.\"Street\", \n  s.\"City\", \n  s.\"Zip\", \n  s.\"State\"\nFROM \n  \"schools\" s\nJOIN \n  \"satscores\" ss ON s.\"CDSCode\" = ss.\"cds\"\nORDER BY \n  (ss.\"NumGE1500\" * 1.0 / ss.\"enroll12\") ASC\nLIMIT 1;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "toxicology",
+      "question": "Calculate the percentage of carcinogenic molecules which contain the Chlorine element.",
+      "gold_sql": "SELECT COUNT(CASE WHEN T2.label = '+' AND T1.element = 'cl' THEN T2.molecule_id ELSE NULL END) * 100 / COUNT(T2.molecule_id) FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id",
+      "final_sql": "SELECT \n  (COUNT(CASE WHEN m.label = 'carcinogenic' AND a.element = 'Cl' THEN 1 END) * 100.0 / COUNT(CASE WHEN m.label = 'carcinogenic' THEN 1 END)) AS percentage\nFROM \n  molecule m\n  JOIN atom a ON m.molecule_id = a.molecule_id\nWHERE \n  m.label = 'carcinogenic';",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT \n  (COUNT(CASE WHEN m.label = 'carcinogenic' AND a.element = 'Cl' THEN 1 END) * 100.0 / COUNT(CASE WHEN m.label = 'carcinogenic' THEN 1 END)) AS percentage\nFROM \n  molecule m\n  JOIN atom a ON m.molecule_id = a.molecule_id\nWHERE \n  m.label = 'carcinogenic';"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "Question asks for entities/details but SQL returns only a count.",
+          "row_count": 1
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT \n  (COUNT(CASE WHEN m.label = 'carcinogenic' AND a.element = 'Cl' THEN 1 END) * 100.0 / COUNT(CASE WHEN m.label = 'carcinogenic' THEN 1 END)) AS percentage\nFROM \n  molecule m\n  JOIN atom a ON m.molecule_id = a.molecule_id\nWHERE \n  m.label = 'carcinogenic';",
+          "issue": "Question asks for entities/details but SQL returns only a count."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "Question asks for entities/details but SQL returns only a count.",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "thrombosis_prediction",
+      "question": "Among the patients with a normal Ig G level, how many of them have symptoms?",
+      "gold_sql": "SELECT COUNT(T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID INNER JOIN Examination AS T3 ON T3.ID = T2.ID WHERE T2.IGG BETWEEN 900 AND 2000 AND T3.Symptoms IS NOT NULL",
+      "final_sql": "SELECT COUNT(*) \nFROM \"Examination\" e\nJOIN \"Patient\" p ON e.\"ID\" = p.\"ID\"\nWHERE e.\"aCL IgG\" = 0\n  AND e.\"Symptoms\" IS NOT NULL\n  AND e.\"Symptoms\" != '';",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT COUNT(*) \nFROM \"Examination\" e\nJOIN \"Patient\" p ON e.\"ID\" = p.\"ID\"\nWHERE e.\"aCL IgG\" = 0\n  AND e.\"Symptoms\" IS NOT NULL\n  AND e.\"Symptoms\" != '';"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "thrombosis_prediction",
+      "question": "For all patients with normal uric acid (UA), what is the average UA index based on their latest laboratory examination result?",
+      "gold_sql": "SELECT AVG(T2.UA) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE (T2.UA < 6.5 AND T1.SEX = 'F') OR (T2.UA < 8.0 AND T1.SEX = 'M') AND T2.Date = ( SELECT MAX(Date) FROM Laboratory )",
+      "final_sql": "SELECT AVG(l.\"UA\") AS \"Average UA\"\nFROM \"Laboratory\" l\nJOIN \"Patient\" p ON l.\"ID\" = p.\"ID\"\nWHERE l.\"UA\" IS NOT NULL\n  AND l.\"UA\" BETWEEN 3.0 AND 7.0\n  AND l.\"Date\" = (\n    SELECT MAX(l2.\"Date\")\n    FROM \"Laboratory\" l2\n    WHERE l2.\"ID\" = l.\"ID\"\n  );",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT AVG(l.\"UA\") AS \"Average UA\"\nFROM \"Laboratory\" l\nJOIN \"Patient\" p ON l.\"ID\" = p.\"ID\"\nWHERE l.\"UA\" IS NOT NULL\n  AND l.\"UA\" BETWEEN 3.0 AND 7.0\n  AND l.\"Date\" = (\n    SELECT MAX(l2.\"Date\")\n    FROM \"Laboratory\" l2\n    WHERE l2.\"ID\" = l.\"ID\"\n  );"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "codebase_community",
+      "question": "User No.23853 gave a comment to a post at 9:08:18 on 2013/7/12, was that post well-finished?",
+      "gold_sql": "SELECT IIF(T2.ClosedDate IS NULL, 'NOT well-finished', 'well-finished') AS resylt FROM comments AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T1.UserId = 23853 AND T1.CreationDate = '2013-07-12 09:08:18.0'",
+      "final_sql": "SELECT p.PostTypeId, p.ClosedDate\nFROM posts p\nJOIN comments c ON p.Id = c.PostId\nWHERE c.UserId = 23853\n  AND c.CreationDate LIKE '2013-07-12 09:08:18%';",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT p.PostTypeId, p.ClosedDate\nFROM posts p\nJOIN comments c ON p.Id = c.PostId\nWHERE c.UserId = 23853\n  AND c.CreationDate = '2013-07-12 09:08:18';"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT p.PostTypeId, p.ClosedDate\nFROM posts p\nJOIN comments c ON p.Id = c.PostId\nWHERE c.UserId = 23853\n  AND c.CreationDate LIKE '2013-07-12 09:08:18%';",
+          "issue": "SQL returned zero rows with filters; filters may be wrong."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "card_games",
+      "question": "What is the type of the card \"Ancestor's Chosen\" as originally printed?",
+      "gold_sql": "SELECT originalType FROM cards WHERE name = 'Ancestor''s Chosen' AND originalType IS NOT NULL",
+      "final_sql": "SELECT \"originalType\"\nFROM \"cards\"\nWHERE \"name\" = \"Ancestor's Chosen\";",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT \"originalType\"\nFROM \"cards\"\nWHERE \"name\" = \"Ancestor's Chosen\";"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 4
+        }
+      ]
+    },
+    {
+      "db_id": "california_schools",
+      "question": "Which active district has the highest average score in Reading?",
+      "gold_sql": "SELECT T1.District FROM schools AS T1 INNER JOIN satscores AS T2 ON T1.CDSCode = T2.cds WHERE T1.StatusType = 'Active' ORDER BY T2.AvgScrRead DESC LIMIT 1",
+      "final_sql": "SELECT s.\"District\", AVG(ss.\"AvgScrRead\") AS avg_reading_score\nFROM \"schools\" s\nJOIN \"satscores\" ss ON s.\"CDSCode\" = ss.\"cds\"\nWHERE s.\"StatusType\" = 'Active'\nGROUP BY s.\"District\"\nORDER BY avg_reading_score DESC\nLIMIT 1;",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT s.\"District\", AVG(ss.\"AvgScrRead\") AS avg_reading_score\nFROM \"schools\" s\nJOIN \"satscores\" ss ON s.\"CDSCode\" = ss.\"cds\"\nWHERE s.\"StatusType\" = 'Active'\nGROUP BY s.\"District\"\nORDER BY avg_reading_score DESC\nLIMIT 1;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "formula_1",
+      "question": "Among all the lap records set on various circuits, what is the time for the fastest one?",
+      "gold_sql": "SELECT time FROM lapTimes ORDER BY (CASE WHEN INSTR(time, ':') <> INSTR(SUBSTR(time, INSTR(time, ':') + 1), ':') + INSTR(time, ':') THEN CAST(SUBSTR(time, 1, INSTR(time, ':') - 1) AS REAL) * 3600 ELSE 0 END) + (CAST(SUBSTR(time, INSTR(time, ':') - 2 * (INSTR(time, ':') = INSTR(SUBSTR(time, INSTR(time, ':') + 1), ':') + INSTR(time, ':')), INSTR(time, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(time, INSTR(time, ':') + 1, INSTR(time, '.') - INSTR(time, ':') - 1) AS REAL)) + (CAST(SUBSTR(time, INSTR(time, '.') + 1) AS REAL) / 1000) ASC LIMIT 1",
+      "final_sql": "SELECT MIN(milliseconds) AS fastest_lap_time\nFROM lapTimes;",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT MIN(milliseconds) AS fastest_lap_time\nFROM lapTimes;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "superhero",
+      "question": "In superheroes with missing weight data, calculate the difference between the number of superheroes with blue eyes and no eye color.",
+      "gold_sql": "SELECT SUM(CASE WHEN T2.id = 7 THEN 1 ELSE 0 END) - SUM(CASE WHEN T2.id = 1 THEN 1 ELSE 0 END) FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id WHERE T1.weight_kg = 0 OR T1.weight_kg is NULL",
+      "final_sql": "SELECT \n  (SELECT COUNT(*) FROM \"superhero\" WHERE \"eye_colour_id\" = (SELECT \"id\" FROM \"colour\" WHERE \"colour\" = 'blue') AND \"weight_kg\" IS NULL) -\n  (SELECT COUNT(*) FROM \"superhero\" WHERE \"eye_colour_id\" IS NULL AND \"weight_kg\" IS NULL) AS difference;",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT \n  (SELECT COUNT(*) FROM \"superhero\" WHERE \"eye_colour_id\" = (SELECT \"id\" FROM \"colour\" WHERE \"colour\" = 'blue') AND \"weight_kg\" IS NULL) -\n  (SELECT COUNT(*) FROM \"superhero\" WHERE \"eye_colour_id\" IS NULL AND \"weight_kg\" IS NULL) AS difference;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "thrombosis_prediction",
+      "question": "List all patients who were followed up at the outpatient clinic who underwent a laboratory test in October 1991 and had a total blood bilirubin level within the normal range.",
+      "gold_sql": "SELECT DISTINCT T1.ID FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Admission = '-' AND T2.`T-BIL` < 2.0 AND T2.Date LIKE '1991-10-%'",
+      "final_sql": "SELECT COUNT(DISTINCT p.\"ID\") AS total_patients\nFROM \"Patient\" p\nJOIN \"Laboratory\" l ON p.\"ID\" = l.\"ID\"\nWHERE p.\"Admission\" = 'outpatient clinic'\n  AND l.\"Date\" >= '1991-10-01'\n  AND l.\"Date\" < '1991-11-01'\n  AND l.\"T-BIL\" BETWEEN 0.2 AND 1.2;",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT DISTINCT p.\"ID\"\nFROM \"Patient\" p\nJOIN \"Laboratory\" l ON p.\"ID\" = l.\"ID\"\nWHERE p.\"Admission\" = 'outpatient clinic'\n  AND l.\"Date\" >= '1991-10-01'\n  AND l.\"Date\" < '1991-11-01'\n  AND l.\"T-BIL\" BETWEEN 0.2 AND 1.2;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "Question asks for a total but SQL does not use SUM or COUNT.",
+          "row_count": 0
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT COUNT(DISTINCT p.\"ID\") AS total_patients\nFROM \"Patient\" p\nJOIN \"Laboratory\" l ON p.\"ID\" = l.\"ID\"\nWHERE p.\"Admission\" = 'outpatient clinic'\n  AND l.\"Date\" >= '1991-10-01'\n  AND l.\"Date\" < '1991-11-01'\n  AND l.\"T-BIL\" BETWEEN 0.2 AND 1.2;",
+          "issue": "Question asks for a total but SQL does not use SUM or COUNT."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "Question asks for entities/details but SQL returns only a count.",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "toxicology",
+      "question": "Among the molecules with element Calcium, are they mostly carcinogenic or non carcinogenic?",
+      "gold_sql": "SELECT T2.label FROM atom AS T1 INNER JOIN molecule AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.element = 'ca' GROUP BY T2.label ORDER BY COUNT(T2.label) DESC LIMIT 1",
+      "final_sql": "SELECT \n  CASE \n    WHEN m.label = 'carcinogenic' THEN 'carcinogenic'\n    ELSE 'non carcinogenic'\n  END AS carcinogenic_status,\n  COUNT(*) AS count\nFROM molecule m\nJOIN atom a ON m.molecule_id = a.molecule_id\nWHERE a.element = 'Calcium'\nGROUP BY carcinogenic_status\nORDER BY count DESC;",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT \n  CASE \n    WHEN m.label = 'carcinogenic' THEN 'carcinogenic'\n    ELSE 'non carcinogenic'\n  END AS carcinogenic_status,\n  COUNT(*) AS count\nFROM molecule m\nJOIN atom a ON m.molecule_id = a.molecule_id\nWHERE a.element = 'Calcium'\nGROUP BY carcinogenic_status\nORDER BY count DESC\nLIMIT 1;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT \n  CASE \n    WHEN m.label = 'carcinogenic' THEN 'carcinogenic'\n    ELSE 'non carcinogenic'\n  END AS carcinogenic_status,\n  COUNT(*) AS count\nFROM molecule m\nJOIN atom a ON m.molecule_id = a.molecule_id\nWHERE a.element = 'Calcium'\nGROUP BY carcinogenic_status\nORDER BY count DESC;",
+          "issue": "SQL returned zero rows with filters; filters may be wrong."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "Question asks for a ranked answer but SQL has no LIMIT.",
+          "row_count": 0
+        }
+      ]
+    },
+    {
+      "db_id": "student_club",
+      "question": "Please list the full names of the students in the Student_Club that come from the Art and Design Department.",
+      "gold_sql": "SELECT T1.first_name, T1.last_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.department = 'Art and Design Department'",
+      "final_sql": "SELECT m.first_name || ' ' || m.last_name AS full_name\nFROM member m\nJOIN major maj ON m.link_to_major = maj.major_id\nWHERE maj.department = 'Art and Design';",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT m.first_name || ' ' || m.last_name AS full_name\nFROM member m\nJOIN major maj ON m.link_to_major = maj.major_id\nWHERE maj.department = 'Art and Design';"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT m.first_name || ' ' || m.last_name AS full_name\nFROM member m\nJOIN major maj ON m.link_to_major = maj.major_id\nWHERE maj.department = 'Art and Design';",
+          "issue": "SQL returned zero rows with filters; filters may be wrong."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        }
+      ]
+    },
+    {
+      "db_id": "card_games",
+      "question": "List all the mythic rarity print cards banned in gladiator format.",
+      "gold_sql": "SELECT DISTINCT T1.id FROM cards AS T1 INNER JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T2.format = 'gladiator' AND T2.status = 'Banned' AND T1.rarity = 'mythic'",
+      "final_sql": "SELECT c.\"name\"\nFROM \"cards\" c\nJOIN \"legalities\" l ON c.\"uuid\" = l.\"uuid\"\nWHERE c.\"rarity\" = 'mythic'\n  AND l.\"format\" = 'Gladiator'\n  AND l.\"status\" = 'banned';",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT c.\"name\"\nFROM \"cards\" c\nJOIN \"legalities\" l ON c.\"uuid\" = l.\"uuid\"\nWHERE c.\"rarity\" = 'mythic'\n  AND l.\"format\" = 'gladiator'\n  AND l.\"status\" = 'banned';"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT c.\"name\"\nFROM \"cards\" c\nJOIN \"legalities\" l ON c.\"uuid\" = l.\"uuid\"\nWHERE c.\"rarity\" = 'mythic'\n  AND l.\"format\" = 'Gladiator'\n  AND l.\"status\" = 'banned';",
+          "issue": "SQL returned zero rows with filters; filters may be wrong."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        }
+      ]
+    },
+    {
+      "db_id": "codebase_community",
+      "question": "Among posts by Harvey Motulsky and Noah Snyder, which one has higher popularity?",
+      "gold_sql": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN posts AS T3 ON T2.PostId = T3.Id WHERE T1.DisplayName = 'Harvey Motulsky' OR T1.DisplayName = 'Noah Snyder' GROUP BY T1.DisplayName ORDER BY SUM(T3.ViewCount) DESC LIMIT 1",
+      "final_sql": "SELECT p.\"Title\"\nFROM \"posts\" p\nJOIN \"users\" u ON p.\"OwnerUserId\" = u.\"Id\"\nWHERE u.\"DisplayName\" IN ('Harvey Motulsky', 'Noah Snyder')\nORDER BY p.\"Score\" DESC, p.\"ViewCount\" DESC\nLIMIT 1;",
+      "final_sql_error": null,
+      "iterations": 1,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT p.\"Title\"\nFROM \"posts\" p\nJOIN \"users\" u ON p.\"OwnerUserId\" = u.\"Id\"\nWHERE u.\"DisplayName\" IN ('Harvey Motulsky', 'Noah Snyder')\nORDER BY p.\"Score\" DESC, p.\"ViewCount\" DESC\nLIMIT 1;"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": true,
+          "issue": "",
+          "row_count": 1
+        }
+      ]
+    },
+    {
+      "db_id": "codebase_community",
+      "question": "Mention the reputation of users who had obtained the badge on 7/19/2010 7:39:08 PM.",
+      "gold_sql": "SELECT T1.Reputation FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Date = '2010-07-19 19:39:08.0'",
+      "final_sql": "SELECT u.Reputation\nFROM users u\nJOIN badges b ON u.Id = b.UserId\nWHERE b.Date = '2010-07-19 19:39:08' OR b.Date = '2010-07-19 19:39:08.000';",
+      "final_sql_error": null,
+      "iterations": 2,
+      "history": [
+        {
+          "node": "generate_sql",
+          "sql": "SELECT u.Reputation\nFROM users u\nJOIN badges b ON u.Id = b.UserId\nWHERE b.Date = '2010-07-19 19:39:08';"
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        },
+        {
+          "node": "revise",
+          "sql": "SELECT u.Reputation\nFROM users u\nJOIN badges b ON u.Id = b.UserId\nWHERE b.Date = '2010-07-19 19:39:08' OR b.Date = '2010-07-19 19:39:08.000';",
+          "issue": "SQL returned zero rows with filters; filters may be wrong."
+        },
+        {
+          "node": "verify",
+          "mode": "deterministic",
+          "ok": false,
+          "issue": "SQL returned zero rows with filters; filters may be wrong.",
+          "row_count": 0
+        }
+      ]
+    }
+  ]
+}

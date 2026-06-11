@@ -13,7 +13,7 @@ from langgraph.graph import END, START, StateGraph
 
 from agent import prompts
 from agent.execution import ExecutionResult, execute_sql
-from agent.context import render_context
+from agent.schema import render_schema
 
 MAX_ITERATIONS = int(os.environ.get("MAX_ITERATIONS", "2"))
 
@@ -47,7 +47,7 @@ def llm() -> ChatOpenAI:
 
 
 def _attach_schema(state: AgentState) -> dict:
-    return {"schema": render_context(state.db_id, state.question)}
+    return {"schema": render_schema(state.db_id)}
 
 
 def _extract_sql(text: str) -> str:
@@ -80,7 +80,8 @@ def verify_node(state: AgentState) -> dict:
     """
     Fast deterministic verifier.
 
-    Avoids an LLM verifier. Sends to revise only for clear structural failures.
+    Keeps SLO damage low by avoiding an LLM verifier.
+    Sends to revise only for clear structural failures.
     """
     execution = state.execution
     q = state.question.lower()
@@ -93,8 +94,6 @@ def verify_node(state: AgentState) -> dict:
     ranking_intent = any(w in q for w in ranking_words)
 
     average_intent = "average" in q or "mean" in q
-    percentage_intent = "percentage" in q or "percent" in q
-
     count_intent = (
         "how many" in q
         or re.search(r"\bcount\b", q) is not None
@@ -106,30 +105,13 @@ def verify_node(state: AgentState) -> dict:
         )
     )
 
-    total_intent = any(
-        phrase in q
-        for phrase in [
-            "total amount",
-            "total number",
-            "total spent",
-            "total cost",
-            "sum of",
+    list_or_attribute_intent = any(
+        w in q
+        for w in [
+            "list", "which", "what are", "what is", "mention", "provide",
+            "name", "names", "id", "ids", "coordinate", "coordinates",
+            "address", "location"
         ]
-    )
-
-    list_or_attribute_intent = (
-        not count_intent
-        and not average_intent
-        and not percentage_intent
-        and not total_intent
-        and any(
-            w in q
-            for w in [
-                "list", "which", "what are", "what is", "mention", "provide",
-                "name", "names", "id", "ids", "coordinate", "coordinates",
-                "address", "location", "type", "reputation"
-            ]
-        )
     )
 
     if execution is None:
@@ -156,13 +138,9 @@ def verify_node(state: AgentState) -> dict:
         ok = False
         issue = "Question asks for an average but SQL does not use AVG."
 
-    elif total_intent and ("sum(" not in sql and "count(" not in sql):
+    elif ("total" in q or "sum of" in q) and ("sum(" not in sql and "count(" not in sql):
         ok = False
-        issue = "Question asks for a total/sum but SQL does not use SUM or COUNT."
-
-    elif percentage_intent and "/" not in sql:
-        ok = False
-        issue = "Question asks for a percentage but SQL does not compute a ratio."
+        issue = "Question asks for a total but SQL does not use SUM or COUNT."
 
     elif ranking_intent and "order by" not in sql:
         ok = False
@@ -172,7 +150,7 @@ def verify_node(state: AgentState) -> dict:
         ok = False
         issue = "Question asks for a ranked answer but SQL has no LIMIT."
 
-    elif list_or_attribute_intent and "count(" in sql:
+    elif list_or_attribute_intent and "count(" in sql and not count_intent:
         ok = False
         issue = "Question asks for entities/details but SQL returns only a count."
 
