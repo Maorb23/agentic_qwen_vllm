@@ -1,0 +1,3019 @@
+{
+  "summary": {
+    "requested_rps": 10.0,
+    "duration_seconds": 60,
+    "wall_clock_seconds": 61.35972525200032,
+    "total_requests": 600,
+    "achieved_rps": 9.778401020145377,
+    "ok": 469,
+    "timeouts": 0,
+    "http_errors": 131,
+    "client_errors": 0,
+    "latency_p50": 0.7667096380000658,
+    "latency_p95": 2.3146375569995143,
+    "latency_p99": 6.018771523999931,
+    "latency_max": 9.447729659000288
+  },
+  "results": [
+    {
+      "latency_seconds": 0.02478239999982179,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.2908849460000056,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.23592448599993077,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.11981614700016507,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5099503900000855,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.015514502999394608,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.8042164880007476,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2876243559994691,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.4995126980002169,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.737311043999398,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3834090070004095,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3091999529997338,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4734281440005361,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5903411220006092,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013622868999846105,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.010927657000138424,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.29259162199923594,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2934949979999146,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4968588889996681,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.36679113900027005,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5502045129996986,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.287023362000582,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.9917579660004776,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.6821548879997863,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2843700740004351,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5468847619995358,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9574755510002433,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8382429829998728,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3392295590001595,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7317894799998612,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.26493547999962175,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9772069230002671,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2657816559994899,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2666631860001871,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9831458759999805,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.9996545829999377,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.243624028999875,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9637096070000553,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9575923339998553,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.18590467200010607,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.016007017999982054,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.013434782999866002,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.3568868270003804,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012946948999342567,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5431156140002713,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.181869266999456,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8233941650005363,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1670843069996408,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2045928349998576,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2247430409997833,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011879618000421033,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.6784151460005887,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01362390000031155,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5449804469999435,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8965571829994587,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8438259840004321,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6081623770005535,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.23765394099973491,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7195260449998386,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013029612999162055,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6015941309997288,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.0150449299999309,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5139893759996994,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012157575999481196,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.01441116600017267,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.43180670000037935,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5611241469996457,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.014174504000038723,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.1415590870001324,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9434750249993158,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.46751616399978957,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.38755945399952907,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01640085600047314,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5318168690000675,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.081165042000066,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9180820580004365,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2896666259994163,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011311118999401515,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.01238802000079886,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.37477581500024826,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.0116705099999308,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.7807881600001565,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013219534000199928,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.610115135000342,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.18389851699976134,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.345361490999494,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.47790987200005475,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013318025999979,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.011063705000196933,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.011750749999919208,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.44015763199968205,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.38005890600015846,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6733411690001958,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2873035960001289,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.30209679500057973,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.18270502400082478,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.010466228000041156,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5385990539998602,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7000310739995257,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0020180920000712,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.39352383900040877,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.07552255399969,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012551537999570428,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.4826279170001726,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.096892597999613,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011512746000335028,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.4555020180005158,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4013091609995172,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0100230680000095,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013429831999928865,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.014063249999708205,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.1859229470001083,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.697867366000537,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01136512799985212,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.012616746999810857,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.8136619759998212,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.43483470099999977,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011749720999432611,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.4594351999994615,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.17766065700016043,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4287230030004139,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.9384731919999467,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.014406278000024031,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.3469001459998253,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.8332973179994951,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.26548851000006835,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.657402885999545,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012334899000052246,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.8367910409997421,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.38946131600005174,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7107323110003563,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.014551735999702942,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.5844383639996522,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012243482000485528,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.8869880840002224,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.243067633999999,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7050029340007313,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011926485999538272,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.27003725099984877,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1052708309998707,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8427329040005134,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011211408000235679,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5168261210001219,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7600398900003711,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6005235129996436,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.21331108400045196,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7450948969999445,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.23769188900041627,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7543765069995061,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.015273306999915803,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.9629747120006868,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.16457317000003968,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4832504859996334,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.474659941000027,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2085643569998865,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.8471107069999562,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.15459835300043778,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.624598359000629,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012285412999517575,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.4094715470000665,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8310179629997947,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0485800719998224,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011410415999307588,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.7630862439991688,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.170122712000193,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.890869293999458,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8003743280005438,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3858991770002831,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6109856530001707,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8478575059998548,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.8803229400000419,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011772597999879508,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.6019759000000704,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.03975498799991328,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.5460475990003033,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9501208319998113,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.017676372999630985,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5283512089999931,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8241793550005241,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4254696830003013,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5992089530000158,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.014930497999557701,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.2668528630001674,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7135389109998869,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.42351793499983614,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.18730933699953312,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013874944999770378,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.2831713830000808,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01524868999968021,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 2.223490208999465,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5539586380000401,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0574624050004786,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0099829640003009,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3938469240001723,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0819718430002467,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7196544219996213,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0737774310000532,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012892248999378353,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.0368718019999505,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011900958999831346,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5107306179997977,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.1940420119999544,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013632185999995272,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.0352824289993805,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0340522830001646,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3096570529996825,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1314219830001093,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4424105480002254,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.015458825999303372,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.4202474710000388,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.8314210380003715,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.28812660299990966,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013841973000126018,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.012457773000278394,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.4444145590005064,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3631154919994515,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012113556999793218,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.34645379399989906,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0852372199997262,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.1558651459999965,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01593483400029072,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5921803899991573,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8835013429998071,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012402614999700745,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6156400210002175,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 5.556997046000106,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.42503640799986897,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2963128540004618,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0425559100003738,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5490266920005524,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4569164989998171,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7874295130004612,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4092179090002901,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.28233631900002365,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.014119421000032162,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.02592008400006307,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 9.060795358000178,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.965121762000308,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011951155999668117,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5887415919996783,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5751282350001929,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4263597459994344,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3324070349999602,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2997143649999998,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.3729213489996255,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7877628030000778,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.41117764099999476,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2720456359993477,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8486271640003906,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1524751669994657,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.8480048370001896,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6967391280004449,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01637844299966673,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6209588729998359,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.201552171000003,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.43944751900016854,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.0816843620004875,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4864054129993747,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.57118314499985,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013192346999858273,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.3453617179993671,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7667096380000658,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.3161415089998627,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.3146375569995143,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.9925474900001063,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.015381633999822952,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.8193603219997385,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.855399930999738,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7699325009998574,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3934940809995169,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.47050278299957426,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.6062706000002436,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.257880424999712,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8520664289999331,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6238088520003657,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.015166017999945325,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5540185059999203,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1704657679993034,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.5119232560000455,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7419978560001255,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.102430388999892,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.073297155000546,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2337577929993131,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5062509970002793,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.26881044099991414,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.5188964389999455,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3531084610003745,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.850178503999814,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.8164287630006584,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.35907675199996447,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7857422269999006,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012172463999377214,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.444672695999543,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0823303510005644,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01337336599954142,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 4.336322461000236,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.515637200999663,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.444652614000006,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.972684976999517,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012778760999935912,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.446388212999409,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.4168993809998938,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3299065000001065,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 9.447729659000288,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9939487960000406,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012942876999659347,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.011554963999515167,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.8696421449994887,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.29476275900015025,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01192999700015207,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6910324620002939,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.19695393399979366,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011224762000892952,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.8590390559993466,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.014331661000142049,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.6258768069992584,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6122780880004939,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.8988712240006862,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5504859800003032,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1262362979996396,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013239878000604222,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.0185802249998233,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.24697726399972453,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9611104840005282,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.36094360100014455,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.681503545999476,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2290780620005535,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8782200249997913,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.160078934000012,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3686885119996077,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6046510430005583,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4917993170001864,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.37035382900012337,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3623324019999927,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4106553299998268,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3333499000000302,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7748347409997223,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011135932000797766,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.2728165879998414,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.9514641899995695,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3889805400003752,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.627150256999812,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012217786999826785,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.012248256000020774,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.4203999439996551,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.37035008700058825,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012552018999485881,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.8898541799999293,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013257696999971813,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.6668674960001226,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.37624731399955635,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8471057409997229,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2674327470003846,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7374208240007647,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.510705859999689,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01305302400032815,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5288586779997786,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.078758521999589,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.1866514189996451,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5499016739995568,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5587968729996646,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.014988936999543512,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.3638974200002849,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3776949510001941,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 5.458839899999475,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013471562999257003,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.1760443780003698,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8344630029996551,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5407140480001544,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0393407520004985,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9420669470000576,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7504895659994872,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.47022215300057724,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9127197799998612,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7194813619998968,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011551404999408987,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.3568469660003757,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9207885189998706,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6741733239996393,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.25369975600006,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7260364919993663,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012925414000164892,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.011413739000090573,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.9641245909997451,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013713903999814647,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.64081900400015,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.074636336000367,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013816575000419107,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.8669046830000298,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013254664000669436,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 7.259033031999934,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.6760442550003063,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.893936983000458,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012673877999986871,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5713936069996635,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7210909420000462,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.251869216000159,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.016469973000312166,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.661532251000608,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6102628010003173,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.511732979000044,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7217542400003367,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4899889799999073,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.1853439280002931,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 3.3885662259999663,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.42127598700062663,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3593383019997418,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6831517410000743,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4915845010000339,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.425688419000835,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5748143850005363,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012933477999467868,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6534318479998547,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3707931679991816,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6913376809998226,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0353623379996861,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6055404469998393,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012785687999894435,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.119693673999791,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01188484799968137,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5812107089996061,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.010917489000348723,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.7122343889996046,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9820057180004369,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6318085040002188,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.40839759899972705,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9168084860002637,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5387166499995146,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5679519479999726,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5433707639995191,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011736054000721197,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.43289209799968376,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6339009849998547,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.33945342500010156,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.18682575399998314,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8671473860003971,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.22327873700032796,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013794001999485772,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.012572241999805556,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.01781425199988,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013383270999838714,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.856040337000195,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3789991630001168,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.30439424799988046,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8236036150001382,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.313612343999921,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8561240090002684,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.29486973799976113,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01119732900042436,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.29599358399991615,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011559927000234893,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.011299847999907797,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.3300298929998462,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.18633475600017846,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9902906799998163,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01266654200026096,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.39603731200077164,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3111051989999396,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011777218999668548,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6562987739998789,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012849630999880901,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.5524207819998992,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7769207189994631,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013468067999383493,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6002640750002683,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3572927590003019,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011645711999335617,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.2563801870001043,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.407682799000213,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.6382349920004344,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2861314350002431,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.111050671999692,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9834967260003395,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3050391189999573,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011602421999668877,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5980232490001072,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.911327156999505,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.46358176800004003,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3791829369993138,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.52908334499989,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.36103570999966905,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011966073000621691,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.3452120759993704,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7752164489993447,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01184154399925319,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.01243146200067713,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 2.024482460999934,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.35978916400017624,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5917529550006293,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.5240815110000767,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012204538999867509,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5000488929999847,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.21214482899995346,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3977524390002145,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4602621379999619,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6783102089993918,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.2925339699995675,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.14429126600043674,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.434820034999575,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012623429000086617,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.3795555240003523,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.01315403399985371,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.411830375000136,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0113021240003945,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.46826354899985745,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013167639000130293,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.24036255200007872,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4183273899998312,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8817418110002109,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.010741125000095053,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.7430398749993401,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4345459980004307,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7909703120003542,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2557374689995413,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4260698779999075,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5219895489999544,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0237126800002443,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.47491746800005785,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1556057119996694,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012566874000185635,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.6197291390008104,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.42065924300004554,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6208439150004779,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4009209570003804,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012102292999770725,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.011626802000137104,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5030970799998613,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.4837495370002216,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8829481419998046,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7077368550008032,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6117215320000469,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.5314697089997935,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3583426750001308,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012851227999817638,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.34052666800016596,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5433136780002314,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.3732475330007219,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011697046999870508,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.35331949299961707,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.6014390410000487,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 3.2626029709999784,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012093531000573421,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.9359898149996297,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.6935959679994994,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.1774960000002466,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.45000139300009323,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012713642999187869,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5783215669998754,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.0255245830003332,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4790124880000803,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012528741000096488,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.013127717999850574,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.7758015219997105,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.013087579000057303,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 6.018771523999931,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011465261999546783,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 1.1464633060004417,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012672770999415661,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.5056769599996187,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8471283389999371,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.36012504900008935,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.236915558999499,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.11908299000060651,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.9216519330002484,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.012825532000533713,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 2.853619592000541,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.153961529999833,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.717951691000053,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 6.66177010499996,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.097726985999543,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.884538249999423,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.5648145899995143,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.560039770000003,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.570927533000031,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7841839330003495,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.9662645209991751,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.6505082050007331,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011720677000084834,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.9238052549999338,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.5684363489999669,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7799746390001019,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.7938057159999516,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.0211447219999172,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7526779350000652,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 4.489904552000553,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.983840049999344,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.011893245999999635,
+      "status": "http_error",
+      "error": "HTTP 500: {\"detail\":\"BadRequestError: Error code: 400 - {'error': {'message': \\\"This model's maximum context length is 2048 tokens. However, you requested 256 output tokens and your prompt contains at least 1793 input tokens, for a total of at least 2049 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=1793)\\\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}\"}"
+    },
+    {
+      "latency_seconds": 0.9521916889998465,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.5822402840003633,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.7912989309998011,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.965669861000606,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.2445267670000248,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 2.97732692900081,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.699691453000014,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.5073076180005955,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 0.8410725730000195,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.3106836380002278,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.5664448480001738,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 1.4240479809996032,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "latency_seconds": 6.059306352000021,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}
