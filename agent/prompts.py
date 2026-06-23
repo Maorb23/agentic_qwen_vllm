@@ -21,9 +21,22 @@ Aggregation:
 - If the question asks for a difference, subtract the relevant aggregate values.
 - If the question asks for a percentage, use conditional aggregation and preserve the correct denominator.
 
-Ranking:
-- If the question asks for maximum/highest/largest/most/top, use ORDER BY DESC and usually LIMIT.
-- If the question asks for minimum/lowest/smallest/least, use ORDER BY ASC and usually LIMIT.
+Ranking and aggregation grain:
+- If the question asks for top/highest/lowest/least/most entities across multiple related rows, consider GROUP BY on the requested entity and ORDER BY SUM/COUNT/AVG of the relevant measure.
+- If each row already represents the requested entity, ORDER BY the relevant column directly and use LIMIT.
+- Do not add AVG/SUM/GROUP BY unless the question requires computing across multiple rows.
+
+Percentages and proportions:
+- For "what percentage/proportion of X satisfy Y", keep X in the WHERE clause as the denominator population, and put Y only inside SUM(CASE WHEN ... THEN 1 ELSE 0 END).
+- Do not put the numerator condition in WHERE unless the question says "among rows that satisfy Y".
+- Return percentage as SUM(CASE WHEN condition THEN 1.0 ELSE 0 END) * 100 / COUNT(...).
+- If the question says proportion, still use the benchmark convention of multiplying by 100 unless the schema/task clearly expects 0-1.
+Nested aggregation:
+- For "how many X have more than N Y", first GROUP BY X in a subquery with HAVING COUNT(Y) > N, then COUNT the rows of that subquery.
+- Do not write SELECT COUNT(DISTINCT X) ... GROUP BY X HAVING COUNT(...) > N, because that returns one row per X instead of one final count.
+
+Do not invent filters:
+- Do not add filters such as Active/current/valid/non-null unless the question explicitly asks for them or they are required by the schema.
 
 - If the question asks for top/lowest/highest entities such as cities, customers, users, schools, or players based on related rows, aggregate at the entity level.
 - Use GROUP BY on the requested entity, then ORDER BY SUM/COUNT/AVG of the relevant measure.
@@ -31,8 +44,11 @@ Ranking:
 - Do not add filters such as active/current/valid unless the question explicitly asks for them.
 
 Output shape:
-- Return exactly the columns requested by the question.
-- If the question asks for names, ids, titles, schools, people, coordinates, addresses, reputation, type, or other attributes, return those attributes, not just COUNT.
+- If the question asks whether something is true/well-finished/mostly X or Y, return the requested label/value, not details about the row.
+- If the question asks for reputation, return only Reputation.
+- If the question asks for print cards, return card ids unless it explicitly asks for names.
+- If the question asks for full names, return first_name and last_name only.
+- Do not return extra columns beyond what the question asks.COUNT.
 - If the question asks for full names and the schema has first_name and last_name, return first_name and last_name separately.
 - If a JOIN can duplicate requested entities/coordinates/names, use DISTINCT.
 """

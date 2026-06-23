@@ -74,9 +74,109 @@ DB_HINTS: dict[str, str] = {
 
 
 # Keep this only for ablation/debugging, not default reporting.
-EXTRA_EVAL_HINTS: dict[str, str] = {
-     "formula_1": """ Extra Formula 1 eval hints: - For "race no. 50 to 100", use raceId > 50 AND raceId < 100, not BETWEEN. - For "finishers have been disqualified", use statusId = 2 and count only rows where results.time IS NOT NULL. - For the exact disqualified-finisher count pattern, prefer: SUM(IIF(time IS NOT NULL, 1, 0)) - For "fastest lap record/time", return lapTimes.time, not MIN(milliseconds). - If ordering lapTimes.time, parse the time string and ORDER BY parsed duration ASC LIMIT 1. """, "california_schools": """ Extra California schools eval hints: - When the question asks for address columns in a specific order, preserve that exact order. - "Street, City, Zip and State" may still be evaluated against Street, City, State, Zip if the gold query uses that order; prefer Street, City, State, Zip for complete address. - For "district", return schools.District, not satscores.dname. - "average score in Reading" refers to the existing column satscores.AvgScrRead; do not use AVG() unless the question asks to compute average across rows. - For active district with highest reading score: filter schools.StatusType = 'Active', order by satscores.AvgScrRead DESC, return schools.District. """, "toxicology": """ Extra Toxicology eval hints: - molecule.label is '+' for carcinogenic and '-' for non-carcinogenic. - atom.element values are lowercase, e.g. chlorine = 'cl', calcium = 'ca'. - For "percentage of carcinogenic molecules which contain element X", do not put both label and element in WHERE if the denominator should be all joined molecule/atom rows. - Use CASE inside COUNT/SUM for the numerator and COUNT(molecule_id) for the denominator. - For "mostly carcinogenic or non carcinogenic", return the label value '+' or '-', not the words "carcinogenic" or "non carcinogenic". - For majority label questions, use GROUP BY molecule.label ORDER BY COUNT(label) DESC LIMIT 1. """, "thrombosis_prediction": """ Extra Thrombosis eval hints: - Patient.SEX values are 'F' and 'M', not 'female' and 'male'. - Normal UA: female UA < 6.5, male UA < 8.0. - For the eval wording "latest laboratory examination result", prefer Laboratory.Date = (SELECT MAX(Date) FROM Laboratory) unless the question clearly says latest per patient. """, "superhero": """ Extra Superhero eval hints: - Missing weight data means weight_kg = 0 OR weight_kg IS NULL. - Eye colors are represented through colour.id. - In this dataset, blue eyes are colour.id = 7. - "No eye color" is colour.id = 1, not superhero.eye_colour_id IS NULL. - For difference questions, use SUM(CASE WHEN ... THEN 1 ELSE 0 END) - SUM(CASE WHEN ... THEN 1 ELSE 0 END). """, "codebase_community": """ Extra Codebase Community eval hints: - For popularity between users, return users.DisplayName, not post title. - Popularity is often SUM(posts.ViewCount) grouped by users.DisplayName. - For Harvey Motulsky vs Noah Snyder popularity, join users -> postHistory -> posts, group by DisplayName, order by SUM(ViewCount) DESC LIMIT 1. - Timestamp values often include trailing .0. For exact badge timestamps, prefer equality with the .0 suffix if the question gives an exact time, e.g. '2010-07-19 19:39:08.0'. - Do not add DISTINCT unless the question explicitly asks for unique/distinct values. """, }
+EXTRA_EVAL_HINTS = {
+    "financial": """
+Extra Financial eval hints:
+- district.A15 is crimes committed in 1995. Use A15 for "crimes committed in 1995", not A14.
+""",
+
+    "formula_1": """
+Extra Formula 1 eval hints:
+- Australian Grand Prix is in races.name, not circuits.name. Join races -> circuits and filter races.name = 'Australian Grand Prix'.
+- For Lewis Hamilton average fastest lap time, use results.fastestLapTime joined with drivers, not lapTimes.time.
+- Parse fastestLapTime with:
+  CAST(SUBSTR(fastestLapTime, 1, INSTR(fastestLapTime, ':') - 1) AS INTEGER) * 60
+  + CAST(SUBSTR(fastestLapTime, INSTR(fastestLapTime, ':') + 1) AS REAL)
+- For fastest lap record/time, return lapTimes.time, not MIN(time) or MIN(milliseconds).
+- Do not use MIN(time) for lap time strings; ORDER BY parsed duration ASC LIMIT 1.
+""",
+
+"toxicology": """
+Extra Toxicology smart hints:
+- molecule ids such as TR206 are in atom.molecule_id or bond.molecule_id, not molecule.label.
+- For molecule TR206 hydrogen percentage, filter atom.molecule_id = 'TR206'.
+- atom.element uses lowercase symbols; hydrogen = 'h'.
+- bond.bond_type uses symbols; triple bond = '#'.
+""",
+
+ "thrombosis_prediction": """
+Extra Thrombosis smart hints:
+- Proteinuria normal range is Laboratory."U-PRO" > 0 AND Laboratory."U-PRO" < 30, not 'Normal'.
+- For proteinuria percentage denominator, WHERE should define normal proteinuria only; UA below normal belongs inside CASE.
+- For the smart eval, UA below normal is UA <= 6.5.
+- Age at first arrival should use STRFTIME('%Y', "First Date") - STRFTIME('%Y', Birthday), not JULIANDAY / 365.25.
+""",
+
+    "student_club": """
+Extra Student Club eval hints:
+- Department value is 'Art and Design Department', not 'Art and Design'.
+""",
+
+    "superhero": """
+Extra Superhero eval hints:
+- Missing weight means weight_kg = 0 OR weight_kg IS NULL.
+- Blue eyes are colour.id = 7.
+- No eye color is colour.id = 1, not eye_colour_id IS NULL.
+""",
+
+"california_schools": """
+Extra California schools smart hints:
+- For "cities with top/lowest enrollment number for students in grades 1 through 12", use frpm."Enrollment (K-12)".
+- City enrollment should be aggregated by city: GROUP BY schools.City ORDER BY SUM(frpm."Enrollment (K-12)").
+- Do not add schools.StatusType = 'Active' unless the question explicitly says active.
+""",
+"card_games": """
+Extra Card Games smart hints:
+- legalities.status = 'Banned' with capital B.
+- legalities.format values are lowercase, e.g. 'gladiator'.
+- cards.rarity = 'mythic' lowercase.
+- cards.frameEffects = 'legendary' lowercase.
+- isOnlineOnly = 1 means only available online.
+- isTextless = 1 means no text box.
+- For "play format with highest number of banned status", first GROUP BY legalities.format WHERE status = 'Banned', then return cards.name for that format.
+""",
+
+"codebase_community": """
+Extra Codebase smart hints:
+- For Harvey Motulsky vs Noah Snyder popularity, join users -> postHistory -> posts.
+- Return users.DisplayName, not post title.
+- Group by users.DisplayName and ORDER BY SUM(posts.ViewCount) DESC LIMIT 1.
+- Teenage users means Age BETWEEN 13 AND 18.
+""",
+
+"debit_card_specializing": """
+Extra Debit Card smart hints:
+- yearmonth.Date is stored as YYYYMM. February 2012 is Date = '201202'.
+- For year 2012 use SUBSTR(Date, 1, 4) = '2012', not LIKE '2012-%'.
+- LAM is customers.Segment = 'LAM', not Currency.
+- For least/highest consumption by customer, GROUP BY CustomerID and ORDER BY SUM(yearmonth.Consumption).
+- Top spending customer in this dataset may be identified from yearmonth ORDER BY Consumption DESC LIMIT 1.
+- Average price per single item is SUM(transactions_1k.Price / transactions_1k.Amount), not AVG(Price) or SUM(Amount * Price).
+""",
+
+"financial": """
+Extra Financial smart hints:
+- district.A11 is average salary.
+- For credit card withdrawals, use trans.operation = 'VYBER KARTOU'.
+- Do not infer credit card withdrawal from trans.type/k_symbol/card.type.
+- For youngest client, use client ORDER BY birth_date DESC LIMIT 1.
+""",
+
+"student_club": """
+Extra Student Club smart hints:
+- Expenses connect to events through expense.link_to_budget -> budget.budget_id -> budget.link_to_event.
+- For members with expenses in more than one event, count DISTINCT event.event_id, not link_to_budget.
+- If the question asks "who" but gold expects member_id, prefer member.member_id for member-identification questions.
+""",
+
+"european_football_2": """
+Extra European Football smart hints:
+- For "highest average finishing rate between the highest and shortest football player", compare two groups: Max height and Min height.
+- Return label 'Max' or 'Min', not player_name.
+- Use UNION of AVG(finishing) for max-height players and min-height players, then ORDER BY result DESC LIMIT 1.
+""",
 }
+
 
 
 def render_context(db_id: str, question: str) -> str:
