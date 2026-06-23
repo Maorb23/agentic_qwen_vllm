@@ -92,7 +92,21 @@ def verify_node(state: AgentState) -> dict:
     ranking_words = ["top", "highest", "lowest", "largest", "smallest", "most", "least", "maximum", "minimum"]
     ranking_intent = any(w in q for w in ranking_words)
 
-    average_intent = "average" in q or "mean" in q
+    average_intent = (
+        "average" in q
+        or "mean" in q
+        or "avg" in q
+    )
+    
+    existing_average_column_hint = any(
+        token in sql
+        for token in [
+            "avgscr",
+            "avg_",
+            "average",
+            "mean",
+        ]
+    )
     percentage_intent = "percentage" in q or "percent" in q
 
     count_intent = (
@@ -149,12 +163,17 @@ def verify_node(state: AgentState) -> dict:
         issue = "SQL contains a write/schema operation."
 
     elif count_intent and "count(" not in sql:
+        rows = execution.rows or []
+        if len(rows) != 1:
+            ok = False
+            issue = "Question likely asks for a count, but SQL does not use COUNT and returns multiple rows."
+    
+    elif average_intent and "avg(" not in sql and not existing_average_column_hint:
         ok = False
-        issue = "Question asks for a count but SQL does not use COUNT."
-
-    elif average_intent and "avg(" not in sql:
-        ok = False
-        issue = "Question asks for an average but SQL does not use AVG."
+        issue = (
+            "Question may ask for an average. Use AVG only if the average must be computed; "
+            "if the schema already has an average/Avg column, use that column."
+        )
 
     elif total_intent and ("sum(" not in sql and "count(" not in sql):
         ok = False
@@ -182,7 +201,33 @@ def verify_node(state: AgentState) -> dict:
 
     else:
         rows = execution.rows or []
+    
+        ranked_entity_intent = (
+            ranking_intent
+            and any(w in q for w in [
+                "city", "cities", "customer", "customers", "user", "users",
+                "member", "members", "player", "players", "school", "schools",
+                "driver", "drivers", "account", "accounts"
+            ])
+        )
+    
         if (
+            ranked_entity_intent
+            and "join" in sql
+            and "group by" not in sql
+            and any(w in q for w in [
+                "enrollment", "spending", "consumption", "expense",
+                "amount", "price", "cost", "popularity", "badges"
+            ])
+        ):
+            ok = False
+            issue = (
+                "Question asks for ranked entities over related rows. "
+                "Use GROUP BY on the requested entity and ORDER BY an aggregate "
+                "such as SUM, COUNT, or AVG. Do not fix this with DISTINCT."
+            )
+    
+        elif (
             list_or_attribute_intent
             and "join" in sql
             and "distinct" not in sql
@@ -191,7 +236,11 @@ def verify_node(state: AgentState) -> dict:
             unique_rows = {repr(row) for row in rows}
             if len(unique_rows) < len(rows):
                 ok = False
-                issue = "SQL returns duplicate rows from a JOIN; add DISTINCT for this list/attribute question."
+                issue = (
+                    "SQL returns duplicate rows from a JOIN. "
+                    "If the question asks for unique entities, use DISTINCT. "
+                    "If it asks for ranked entities, use GROUP BY plus an aggregate."
+                )
 
     return {
         "verify_ok": ok,

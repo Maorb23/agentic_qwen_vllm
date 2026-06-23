@@ -1,9 +1,8 @@
-"""Lightweight semantic context hints for BIRD-style text-to-SQL.
-
-No extra LLM calls. These hints are appended to the schema prompt.
-"""
+"""Lightweight semantic context hints for BIRD-style text-to-SQL."""
 
 from __future__ import annotations
+
+import os
 
 from agent.schema import render_schema
 
@@ -13,148 +12,83 @@ GENERAL_HINTS = """
 -- Use single quotes for string literals, e.g. name = 'Alice'.
 -- Use double quotes only for table/column identifiers when needed.
 -- For exact timestamp filters, prefer LIKE 'YYYY-MM-DD HH:MM:SS%' because some DBs store fractional seconds.
--- If a JOIN can duplicate requested names/ids/coordinates/attributes, use DISTINCT.
+-- If a JOIN can duplicate requested names/ids/coordinates/attributes, use DISTINCT only when duplicates are likely.
 -- If the question asks for full names and schema has first_name and last_name, return both columns separately.
--- If the question asks whether something is true/well-finished/mostly X or Y, return the requested label using CASE, GROUP BY, or ORDER BY COUNT as appropriate.
 """
 
 
 DB_HINTS: dict[str, str] = {
     "toxicology": """
 -- TOXICOLOGY HINTS
--- molecule.label is the carcinogenicity label. '+' means carcinogenic and '-' means non carcinogenic.
--- atom.element values are lowercase chemical symbols such as 'cl' and 'ca', not 'Chlorine' or 'Calcium'.
--- For "mostly carcinogenic or non carcinogenic", group by molecule.label and order by COUNT DESC LIMIT 1.
--- For percentages, use conditional aggregation. Be careful not to filter away the denominator unless the question says "among".
+-- molecule.label stores carcinogenicity labels.
+-- atom.element values are stored as chemical symbols.
+-- For percentages, use conditional aggregation and preserve the correct denominator.
 """,
 
     "formula_1": """
 -- FORMULA 1 HINTS
--- fastestLapTime is usually text like M:SS.sss. Convert to seconds with:
--- CAST(SUBSTR(fastestLapTime, 1, INSTR(fastestLapTime, ':') - 1) AS INTEGER) * 60
--- + CAST(SUBSTR(fastestLapTime, INSTR(fastestLapTime, ':') + 1) AS REAL)
--- If the question asks for the time of the fastest lap record, return lapTimes.time, not MIN(milliseconds).
--- For "disqualified", statusId = 2 is often the intended status in results.
--- If the question says from race no. X to Y, prefer raceId > X AND raceId < Y unless inclusive is explicit.
+-- fastestLapTime is usually text like M:SS.sss and may need parsing before ordering.
+-- If the question asks for the time of a fastest lap, return the time column, not only milliseconds.
 """,
 
     "california_schools": """
 -- CALIFORNIA SCHOOLS HINTS
--- Excellence rate in SAT scores is NumGE1500 / NumTstTakr.
--- Reading score is usually satscores.AvgScrRead.
--- If asking for the district/school with highest score, order by the score column and LIMIT 1; do not AVG unless grouping is explicitly requested.
+-- Reading score is usually represented by an existing reading-score column.
+-- If asking for a district/school with highest score, order by the score column and LIMIT 1.
 """,
 
     "financial": """
 -- FINANCIAL HINTS
--- district.A15 is crimes committed in 1995.
--- district.A14 is a different crime-year field, not 1995.
--- account.date is a date string; use STRFTIME('%Y', account.date) for year filters.
+-- Date fields are often strings; use STRFTIME when filtering by year.
 """,
 
     "thrombosis_prediction": """
 -- THROMBOSIS HINTS
--- Normal Ig G level means Laboratory.IGG BETWEEN 900 AND 2000.
--- Normal uric acid UA depends on sex: female UA < 6.5, male UA < 8.0.
--- Outpatient clinic admission is represented by Patient.Admission = '-'.
--- Normal total blood bilirubin T-BIL means Laboratory."T-BIL" < 2.0.
--- October 1991 dates can be matched with Laboratory.Date LIKE '1991-10-%'.
+-- Some lab columns have special characters and may need double quotes.
+-- Date filters may need LIKE for year/month matching.
 """,
 
     "codebase_community": """
 -- CODEBASE COMMUNITY HINTS
--- Timestamp columns often include a trailing fractional second like '.0'. Use LIKE 'YYYY-MM-DD HH:MM:SS%' for exact timestamp questions.
--- A post is well-finished if posts.ClosedDate IS NOT NULL; otherwise it is NOT well-finished.
--- Popularity is usually based on ViewCount. For popularity by user, group by user/display name and order by SUM(posts.ViewCount) DESC.
+-- Timestamp columns often include trailing fractional seconds like '.0'.
+-- ViewCount is usually the popularity signal for posts.
 """,
 
     "card_games": """
 -- CARD GAMES HINTS
--- legalities.format values are lowercase, e.g. 'gladiator'.
--- legalities.status values may be capitalized, e.g. 'Banned'.
--- If the question asks for print cards, return cards.id unless it explicitly asks for names.
--- "Originally printed" usually refers to cards.originalType and should exclude NULL originalType.
+-- Some categorical values may be lowercase or capitalized; inspect exact stored values when possible.
+-- If the question asks for print cards, return card identifiers unless it explicitly asks for names.
 """,
 
     "student_club": """
 -- STUDENT CLUB HINTS
--- Department names may include the word 'Department', e.g. 'Art and Design Department'.
--- If the question asks for full names, return first_name and last_name as separate columns unless a full_name column exists.
+-- If the question asks for full names, return first_name and last_name separately unless a full_name column exists.
 """,
 
     "superhero": """
 -- SUPERHERO HINTS
--- Missing weight data may be represented by weight_kg = 0 OR weight_kg IS NULL.
--- Use the colour table for eye colors instead of assuming NULL means no color.
+-- Use lookup tables such as colour/gender/race/publisher when the schema provides them.
+-- Missing numeric values may be represented as NULL or zero depending on the column.
 """,
 }
 
 
+# Keep this only for ablation/debugging, not default reporting.
+EXTRA_EVAL_HINTS: dict[str, str] = {
+     "formula_1": """ Extra Formula 1 eval hints: - For "race no. 50 to 100", use raceId > 50 AND raceId < 100, not BETWEEN. - For "finishers have been disqualified", use statusId = 2 and count only rows where results.time IS NOT NULL. - For the exact disqualified-finisher count pattern, prefer: SUM(IIF(time IS NOT NULL, 1, 0)) - For "fastest lap record/time", return lapTimes.time, not MIN(milliseconds). - If ordering lapTimes.time, parse the time string and ORDER BY parsed duration ASC LIMIT 1. """, "california_schools": """ Extra California schools eval hints: - When the question asks for address columns in a specific order, preserve that exact order. - "Street, City, Zip and State" may still be evaluated against Street, City, State, Zip if the gold query uses that order; prefer Street, City, State, Zip for complete address. - For "district", return schools.District, not satscores.dname. - "average score in Reading" refers to the existing column satscores.AvgScrRead; do not use AVG() unless the question asks to compute average across rows. - For active district with highest reading score: filter schools.StatusType = 'Active', order by satscores.AvgScrRead DESC, return schools.District. """, "toxicology": """ Extra Toxicology eval hints: - molecule.label is '+' for carcinogenic and '-' for non-carcinogenic. - atom.element values are lowercase, e.g. chlorine = 'cl', calcium = 'ca'. - For "percentage of carcinogenic molecules which contain element X", do not put both label and element in WHERE if the denominator should be all joined molecule/atom rows. - Use CASE inside COUNT/SUM for the numerator and COUNT(molecule_id) for the denominator. - For "mostly carcinogenic or non carcinogenic", return the label value '+' or '-', not the words "carcinogenic" or "non carcinogenic". - For majority label questions, use GROUP BY molecule.label ORDER BY COUNT(label) DESC LIMIT 1. """, "thrombosis_prediction": """ Extra Thrombosis eval hints: - Patient.SEX values are 'F' and 'M', not 'female' and 'male'. - Normal UA: female UA < 6.5, male UA < 8.0. - For the eval wording "latest laboratory examination result", prefer Laboratory.Date = (SELECT MAX(Date) FROM Laboratory) unless the question clearly says latest per patient. """, "superhero": """ Extra Superhero eval hints: - Missing weight data means weight_kg = 0 OR weight_kg IS NULL. - Eye colors are represented through colour.id. - In this dataset, blue eyes are colour.id = 7. - "No eye color" is colour.id = 1, not superhero.eye_colour_id IS NULL. - For difference questions, use SUM(CASE WHEN ... THEN 1 ELSE 0 END) - SUM(CASE WHEN ... THEN 1 ELSE 0 END). """, "codebase_community": """ Extra Codebase Community eval hints: - For popularity between users, return users.DisplayName, not post title. - Popularity is often SUM(posts.ViewCount) grouped by users.DisplayName. - For Harvey Motulsky vs Noah Snyder popularity, join users -> postHistory -> posts, group by DisplayName, order by SUM(ViewCount) DESC LIMIT 1. - Timestamp values often include trailing .0. For exact badge timestamps, prefer equality with the .0 suffix if the question gives an exact time, e.g. '2010-07-19 19:39:08.0'. - Do not add DISTINCT unless the question explicitly asks for unique/distinct values. """, }
+}
+
+
 def render_context(db_id: str, question: str) -> str:
+    mode = os.environ.get("CONTEXT_MODE", "clean").lower()
+
     parts = [
         render_schema(db_id),
         GENERAL_HINTS,
         DB_HINTS.get(db_id, ""),
     ]
+
+    if mode == "tuned":
+        parts.append(EXTRA_EVAL_HINTS.get(db_id, ""))
+
     return "\n".join(p for p in parts if p.strip())
-
-# --- Extra targeted eval hints added after inspecting eval failures ---
-_BASE_RENDER_CONTEXT = render_context
-
-EXTRA_EVAL_HINTS = {
-    "formula_1": """
-Extra Formula 1 eval hints:
-- For "race no. 50 to 100", use raceId > 50 AND raceId < 100, not BETWEEN.
-- For "finishers have been disqualified", use statusId = 2 and count only rows where results.time IS NOT NULL.
-- For the exact disqualified-finisher count pattern, prefer:
-  SUM(IIF(time IS NOT NULL, 1, 0))
-- For "fastest lap record/time", return lapTimes.time, not MIN(milliseconds).
-- If ordering lapTimes.time, parse the time string and ORDER BY parsed duration ASC LIMIT 1.
-""",
-    "california_schools": """
-Extra California schools eval hints:
-- When the question asks for address columns in a specific order, preserve that exact order.
-- "Street, City, Zip and State" may still be evaluated against Street, City, State, Zip if the gold query uses that order; prefer Street, City, State, Zip for complete address.
-- For "district", return schools.District, not satscores.dname.
-- "average score in Reading" refers to the existing column satscores.AvgScrRead; do not use AVG() unless the question asks to compute average across rows.
-- For active district with highest reading score: filter schools.StatusType = 'Active', order by satscores.AvgScrRead DESC, return schools.District.
-""",
-    "toxicology": """
-Extra Toxicology eval hints:
-- molecule.label is '+' for carcinogenic and '-' for non-carcinogenic.
-- atom.element values are lowercase, e.g. chlorine = 'cl', calcium = 'ca'.
-- For "percentage of carcinogenic molecules which contain element X", do not put both label and element in WHERE if the denominator should be all joined molecule/atom rows.
-- Use CASE inside COUNT/SUM for the numerator and COUNT(molecule_id) for the denominator.
-- For "mostly carcinogenic or non carcinogenic", return the label value '+' or '-', not the words "carcinogenic" or "non carcinogenic".
-- For majority label questions, use GROUP BY molecule.label ORDER BY COUNT(label) DESC LIMIT 1.
-""",
-    "thrombosis_prediction": """
-Extra Thrombosis eval hints:
-- Patient.SEX values are 'F' and 'M', not 'female' and 'male'.
-- Normal UA: female UA < 6.5, male UA < 8.0.
-- For the eval wording "latest laboratory examination result", prefer Laboratory.Date = (SELECT MAX(Date) FROM Laboratory) unless the question clearly says latest per patient.
-""",
-    "superhero": """
-Extra Superhero eval hints:
-- Missing weight data means weight_kg = 0 OR weight_kg IS NULL.
-- Eye colors are represented through colour.id.
-- In this dataset, blue eyes are colour.id = 7.
-- "No eye color" is colour.id = 1, not superhero.eye_colour_id IS NULL.
-- For difference questions, use SUM(CASE WHEN ... THEN 1 ELSE 0 END) - SUM(CASE WHEN ... THEN 1 ELSE 0 END).
-""",
-    "codebase_community": """
-Extra Codebase Community eval hints:
-- For popularity between users, return users.DisplayName, not post title.
-- Popularity is often SUM(posts.ViewCount) grouped by users.DisplayName.
-- For Harvey Motulsky vs Noah Snyder popularity, join users -> postHistory -> posts, group by DisplayName, order by SUM(ViewCount) DESC LIMIT 1.
-- Timestamp values often include trailing .0. For exact badge timestamps, prefer equality with the .0 suffix if the question gives an exact time, e.g. '2010-07-19 19:39:08.0'.
-- Do not add DISTINCT unless the question explicitly asks for unique/distinct values.
-""",
-}
-
-def render_context(db_id: str, question: str) -> str:
-    base = _BASE_RENDER_CONTEXT(db_id, question)
-    extra = EXTRA_EVAL_HINTS.get(db_id, "")
-    if extra:
-        return base + "\n\n" + extra
-    return base

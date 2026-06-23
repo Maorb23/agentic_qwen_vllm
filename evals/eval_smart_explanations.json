@@ -1,0 +1,382 @@
+{
+  "num_selected": 30,
+  "category_counts": {
+    "group_by": 8,
+    "join": 10,
+    "list_attribute": 10,
+    "order_limit": 10,
+    "ranking": 10,
+    "count": 9,
+    "date_time": 8,
+    "aggregation": 10,
+    "case": 7,
+    "basic": 6
+  },
+  "selection_strategy": [
+    "Read BIRD dev questions from data/bird/dev_20240627/dev.json when available",
+    "Fallback to load_test/perf_pool.jsonl",
+    "Round-robin across DBs for domain coverage",
+    "Prefer higher-complexity SQL",
+    "Balance categories such as count, aggregation, ranking, joins, dates, CASE, and list questions"
+  ],
+  "items": [
+    {
+      "db_id": "california_schools",
+      "question": "Which cities have the top 5 lowest enrollment number for students in grades 1 through 12?",
+      "gold_sql": "SELECT T2.City FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode GROUP BY T2.City ORDER BY SUM(T1.`Enrollment (K-12)`) ASC LIMIT 5",
+      "categories": [
+        "group_by",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 8,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: group_by, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "card_games",
+      "question": "Which of the play format has the highest number of banned status? Indicate the play format and the names of all the card meet the condition.",
+      "gold_sql": "WITH MaxBanned AS (SELECT format, COUNT(*) AS count_banned FROM legalities WHERE status = 'Banned' GROUP BY format ORDER BY COUNT(*) DESC LIMIT 1) SELECT T2.format, T1.name FROM cards AS T1 INNER JOIN legalities AS T2 ON T2.uuid = T1.uuid INNER JOIN MaxBanned MB ON MB.format = T2.format WHERE T2.status = 'Banned'",
+      "categories": [
+        "count",
+        "date_time",
+        "group_by",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 10,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: count, date_time, group_by, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "codebase_community",
+      "question": "Among posts by Harvey Motulsky and Noah Snyder, which one has higher popularity?",
+      "gold_sql": "SELECT T1.DisplayName FROM users AS T1 INNER JOIN postHistory AS T2 ON T1.Id = T2.UserId INNER JOIN posts AS T3 ON T2.PostId = T3.Id WHERE T1.DisplayName = 'Harvey Motulsky' OR T1.DisplayName = 'Noah Snyder' GROUP BY T1.DisplayName ORDER BY SUM(T3.ViewCount) DESC LIMIT 1",
+      "categories": [
+        "date_time",
+        "group_by",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 10,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: date_time, group_by, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "debit_card_specializing",
+      "question": "Who is the top spending customer and how much is the average price per single item purchased by this customer? What currency was being used?",
+      "gold_sql": "SELECT T2.CustomerID, SUM(T2.Price / T2.Amount), T1.Currency FROM customers AS T1 INNER JOIN transactions_1k AS T2 ON T1.CustomerID = T2.CustomerID WHERE T2.CustomerID = ( SELECT CustomerID FROM yearmonth ORDER BY Consumption DESC LIMIT 1 ) GROUP BY T2.CustomerID, T1.Currency",
+      "categories": [
+        "aggregation",
+        "group_by",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 9,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, group_by, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "european_football_2",
+      "question": "Who has the highest average finishing rate between the highest and shortest football player?",
+      "gold_sql": "SELECT A FROM ( SELECT AVG(finishing) result, 'Max' A FROM Player AS T1 INNER JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T1.height = ( SELECT MAX(height) FROM Player ) UNION SELECT AVG(finishing) result, 'Min' A FROM Player AS T1 INNER JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T1.height = ( SELECT MIN(height) FROM Player ) ) ORDER BY result DESC LIMIT 1",
+      "categories": [
+        "aggregation",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 11,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "financial",
+      "question": "List out the account numbers of female clients who are oldest and has lowest average salary, calculate the gap between this lowest average salary with the highest average salary?",
+      "gold_sql": "SELECT T1.account_id , ( SELECT MAX(A11) - MIN(A11) FROM district ) FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id INNER JOIN disp AS T3 ON T1.account_id = T3.account_id INNER JOIN client AS T4 ON T3.client_id = T4.client_id WHERE T2.district_id = ( SELECT district_id FROM client WHERE gender = 'F' ORDER BY birth_date ASC LIMIT 1 ) ORDER BY T2.A11 DESC LIMIT 1",
+      "categories": [
+        "aggregation",
+        "count",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 13,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, count, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "formula_1",
+      "question": "In the race a driver set the lap record for the Austrian Grand Prix Circuit, how long did he spent at the pit stop at that same race?",
+      "gold_sql": "WITH fastest_lap_times AS ( SELECT T1.raceId, T1.driverId, T1.FastestLapTime, (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) as time_in_seconds FROM results AS T1 WHERE T1.FastestLapTime IS NOT NULL), lap_record_race AS ( SELECT T1.raceId, T1.driverId FROM results AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId INNER JOIN ( SELECT MIN(fastest_lap_times.time_in_seconds) as min_time_in_seconds FROM fastest_lap_times INNER JOIN races AS T2 on fastest_lap_times.raceId = T2.raceId INNER JOIN circuits AS T3 on T2.circuitId = T3.circuitId WHERE T2.name = 'Austrian Grand Prix') AS T4 ON (CAST(SUBSTR(T1.FastestLapTime, 1, INSTR(T1.FastestLapTime, ':') - 1) AS REAL) * 60) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, ':') + 1, INSTR(T1.FastestLapTime, '.') - INSTR(T1.FastestLapTime, ':') - 1) AS REAL)) + (CAST(SUBSTR(T1.FastestLapTime, INSTR(T1.FastestLapTime, '.') + 1) AS REAL) / 1000) = T4.min_time_in_seconds WHERE T2.name = 'Austrian Grand Prix') SELECT T4.duration FROM lap_record_race INNER JOIN pitStops AS T4 on lap_record_race.raceId = T4.raceId AND lap_record_race.driverId = T4.driverId",
+      "categories": [
+        "date_time",
+        "join",
+        "ranking"
+      ],
+      "complexity": 14,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: date_time, join, ranking"
+    },
+    {
+      "db_id": "student_club",
+      "question": "Among the members who incurred expenses in more than one event, who paid the most amount?",
+      "gold_sql": "SELECT T2.member_id FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id INNER JOIN budget AS T3 ON T1.link_to_budget = T3.budget_id INNER JOIN event AS T4 ON T3.link_to_event = T4.event_id GROUP BY T2.member_id HAVING COUNT(DISTINCT T4.event_id) > 1 ORDER BY SUM(T1.cost) DESC LIMIT 1",
+      "categories": [
+        "date_time",
+        "group_by",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 12,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: date_time, group_by, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "superhero",
+      "question": "Who is the tallest superhero?",
+      "gold_sql": "SELECT superhero_name FROM superhero ORDER BY height_cm DESC LIMIT 1",
+      "categories": [
+        "list_attribute",
+        "order_limit"
+      ],
+      "complexity": 4,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: list_attribute, order_limit"
+    },
+    {
+      "db_id": "thrombosis_prediction",
+      "question": "What percentage of patients with a proteinuria level within the normal range have a uric acid level below the normal range?",
+      "gold_sql": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Laboratory WHERE `U-PRO` > 0 AND `U-PRO` < 30",
+      "categories": [
+        "aggregation",
+        "case"
+      ],
+      "complexity": 3,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, case"
+    },
+    {
+      "db_id": "toxicology",
+      "question": "How much of the hydrogen in molecule TR206 is accounted for? Please provide your answer as a percentage with four decimal places.",
+      "gold_sql": "SELECT ROUND(CAST(COUNT(CASE WHEN T.element = 'h' THEN T.atom_id ELSE NULL END) AS REAL) * 100 / COUNT(T.atom_id),4) FROM atom AS T WHERE T.molecule_id = 'TR206'",
+      "categories": [
+        "aggregation",
+        "case",
+        "count"
+      ],
+      "complexity": 3,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, case, count"
+    },
+    {
+      "db_id": "california_schools",
+      "question": "In Los Angeles how many schools have more than 500 free meals but less than 700 free or reduced price meals for K-12?",
+      "gold_sql": "SELECT COUNT(CDSCode) FROM frpm WHERE `County Name` = 'Los Angeles' AND `Free Meal Count (K-12)` > 500 AND `FRPM Count (K-12)`< 700",
+      "categories": [
+        "count"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: count"
+    },
+    {
+      "db_id": "card_games",
+      "question": "What percentage of legendary frame effect cards that are only available in online game variations?",
+      "gold_sql": "SELECT SUM(CASE WHEN isOnlineOnly = 1 THEN 1.0 ELSE 0 END) / COUNT(id) * 100 FROM cards WHERE frameEffects = 'legendary'",
+      "categories": [
+        "aggregation",
+        "case",
+        "date_time"
+      ],
+      "complexity": 3,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, case, date_time"
+    },
+    {
+      "db_id": "codebase_community",
+      "question": "Identify the percentage of teenage users.",
+      "gold_sql": "SELECT CAST(SUM(IIF(Age BETWEEN 13 AND 18, 1, 0)) AS REAL) * 100 / COUNT(Id) FROM users",
+      "categories": [
+        "aggregation",
+        "case"
+      ],
+      "complexity": 3,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, case"
+    },
+    {
+      "db_id": "debit_card_specializing",
+      "question": "In February 2012, what percentage of customers consumed more than 528.3?",
+      "gold_sql": "SELECT CAST(SUM(IIF(Consumption > 528.3, 1, 0)) AS FLOAT) * 100 / COUNT(CustomerID) FROM yearmonth WHERE Date = '201202'",
+      "categories": [
+        "aggregation",
+        "case"
+      ],
+      "complexity": 3,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, case"
+    },
+    {
+      "db_id": "european_football_2",
+      "question": "Give the team_fifa_api_id of teams with more than 50 but less than 60 build-up play speed.",
+      "gold_sql": "SELECT DISTINCT team_fifa_api_id FROM Team_Attributes WHERE buildUpPlaySpeed > 50 AND buildUpPlaySpeed < 60",
+      "categories": [
+        "date_time"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: date_time"
+    },
+    {
+      "db_id": "financial",
+      "question": "How many credit card withdrawals were recorded after 1995?",
+      "gold_sql": "SELECT COUNT(account_id) FROM trans WHERE STRFTIME('%Y', date) > '1995' AND operation = 'VYBER KARTOU'",
+      "categories": [
+        "count"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: count"
+    },
+    {
+      "db_id": "formula_1",
+      "question": "How many drivers don't have a code?",
+      "gold_sql": "SELECT COUNT(driverId) - COUNT(CASE WHEN code IS NOT NULL THEN code END) FROM drivers",
+      "categories": [
+        "case",
+        "count"
+      ],
+      "complexity": 2,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: case, count"
+    },
+    {
+      "db_id": "student_club",
+      "question": "With the biggest budget for the \"Food\", what was the remaining of it?",
+      "gold_sql": "SELECT remaining FROM budget WHERE category = 'Food' AND amount = ( SELECT MAX(amount) FROM budget WHERE category = 'Food' )",
+      "categories": [
+        "basic"
+      ],
+      "complexity": 2,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: basic"
+    },
+    {
+      "db_id": "superhero",
+      "question": "Give the publisher ID of Star Trek.",
+      "gold_sql": "SELECT id FROM publisher WHERE publisher_name = 'Star Trek'",
+      "categories": [
+        "basic"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: basic"
+    },
+    {
+      "db_id": "thrombosis_prediction",
+      "question": "What was the age of the youngest patient when they initially arrived at the hospital?",
+      "gold_sql": "SELECT MIN(STRFTIME('%Y', `First Date`) - STRFTIME('%Y', Birthday)) FROM Patient",
+      "categories": [
+        "basic"
+      ],
+      "complexity": 2,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: basic"
+    },
+    {
+      "db_id": "toxicology",
+      "question": "How many triple type bonds are there?",
+      "gold_sql": "SELECT COUNT(T.bond_id) FROM bond AS T WHERE T.bond_type = '#'",
+      "categories": [
+        "count"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: count"
+    },
+    {
+      "db_id": "california_schools",
+      "question": "Please specify all of the schools and their related mailing zip codes that are under Avetik Atoian's administration.",
+      "gold_sql": "SELECT School, MailZip FROM schools WHERE AdmFName1 = 'Avetik' AND AdmLName1 = 'Atoian'",
+      "categories": [
+        "basic"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: basic"
+    },
+    {
+      "db_id": "card_games",
+      "question": "What proportion of cards do not have a text box with a normal layout?",
+      "gold_sql": "SELECT CAST(SUM(CASE WHEN isTextless = 1 AND layout = 'normal' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM cards",
+      "categories": [
+        "case"
+      ],
+      "complexity": 2,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: case"
+    },
+    {
+      "db_id": "codebase_community",
+      "question": "How many users are awarded with more than 5 badges?",
+      "gold_sql": "SELECT COUNT(UserId) FROM ( SELECT UserId, COUNT(Name) AS num FROM badges GROUP BY UserId ) T WHERE T.num > 5",
+      "categories": [
+        "count",
+        "group_by"
+      ],
+      "complexity": 2,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: count, group_by"
+    },
+    {
+      "db_id": "debit_card_specializing",
+      "question": "In 2012, who had the least consumption in LAM?",
+      "gold_sql": "SELECT T1.CustomerID FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Segment = 'LAM' AND SUBSTR(T2.Date, 1, 4) = '2012' GROUP BY T1.CustomerID ORDER BY SUM(T2.Consumption) ASC LIMIT 1",
+      "categories": [
+        "aggregation",
+        "date_time",
+        "group_by",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 8,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, date_time, group_by, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "european_football_2",
+      "question": "What's the long name for the team GEN?",
+      "gold_sql": "SELECT team_long_name FROM Team WHERE team_short_name = 'GEN'",
+      "categories": [
+        "date_time"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: date_time"
+    },
+    {
+      "db_id": "financial",
+      "question": "List out the account numbers of clients who are youngest and have highest average salary?",
+      "gold_sql": "SELECT T1.account_id  FROM account AS T1 INNER JOIN disp AS T2 ON T1.account_id = T2.account_id INNER JOIN client AS T3 ON T2.client_id = T3.client_id INNER JOIN district AS T4 on T4.district_id = T1.district_id WHERE T2.client_id = ( SELECT client_id FROM client ORDER BY birth_date DESC LIMIT 1) GROUP BY T4.A11, T1.account_id",
+      "categories": [
+        "aggregation",
+        "count",
+        "group_by",
+        "join",
+        "list_attribute",
+        "order_limit",
+        "ranking"
+      ],
+      "complexity": 13,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: aggregation, count, group_by, join, list_attribute, order_limit, ranking"
+    },
+    {
+      "db_id": "formula_1",
+      "question": "What's the location coordinates of Silverstone Circuit?",
+      "gold_sql": "SELECT lat, lng FROM circuits WHERE name = 'Silverstone Circuit'",
+      "categories": [
+        "basic"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: basic"
+    },
+    {
+      "db_id": "student_club",
+      "question": "Give the location for \"Spring Budget Review\".",
+      "gold_sql": "SELECT location FROM event WHERE event_name = 'Spring Budget Review'",
+      "categories": [
+        "basic"
+      ],
+      "complexity": 0,
+      "why_selected": "Selected for balanced coverage across databases and SQL skills: basic"
+    }
+  ]
+}

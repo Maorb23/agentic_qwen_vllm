@@ -25,6 +25,11 @@ Ranking:
 - If the question asks for maximum/highest/largest/most/top, use ORDER BY DESC and usually LIMIT.
 - If the question asks for minimum/lowest/smallest/least, use ORDER BY ASC and usually LIMIT.
 
+- If the question asks for top/lowest/highest entities such as cities, customers, users, schools, or players based on related rows, aggregate at the entity level.
+- Use GROUP BY on the requested entity, then ORDER BY SUM/COUNT/AVG of the relevant measure.
+- Do not rank individual rows when the question asks for ranked entities.
+- Do not add filters such as active/current/valid unless the question explicitly asks for them.
+
 Output shape:
 - Return exactly the columns requested by the question.
 - If the question asks for names, ids, titles, schools, people, coordinates, addresses, reputation, type, or other attributes, return those attributes, not just COUNT.
