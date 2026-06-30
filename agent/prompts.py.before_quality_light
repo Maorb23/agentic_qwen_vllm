@@ -1,3 +1,4 @@
+
 """Prompt templates for the agent nodes."""
 
 GENERATE_SQL_SYSTEM = """You are an expert text-to-SQL assistant for SQLite.
